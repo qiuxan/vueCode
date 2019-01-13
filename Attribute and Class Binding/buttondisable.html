@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div id="root">
+        <button id="button" @click="dis">{{ btnText }}</button>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+    var app = new Vue({
+        el: '#root',
+        data: {
+            btnText: 'Disable Me'
+        },
+        methods: {
+            dis: ()=> {
+                this.btnText = "Disabled";
+                button.disabled = true;
+            }
+        }
+    })
+    </script>
+</body>
+</html>

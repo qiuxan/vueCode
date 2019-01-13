@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">	
+              <title></title>
+              <style type="text/css" media="screen">
+                .color-red {color:red; } 
+                .color-blue {color:blue; } 
+                .is-loading {background:red;}
+              </style>
+    </head>
+    <body>
+
+        <div id="root">
+            <h1 :class="className">Hello world</h1>
+
+            <button :class="{'is-loading':isloading}" @click="toggleClass">Click me!</button>
+        </div>
+          <!-- development version, includes helpful console warnings -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script charset="utf-8">
+
+
+            var app= new Vue({
+                el: '#root',
+                data: {
+
+                    className: 'color-red',
+                    isloading: true,
+                  
+                },
+                methods:{
+                    toggleClass(){               
+                       // alert('h');
+                        this.isloading=false;
+                    }
+
+                },
+            });
+
+         </script>
+    </body>
+</html>
