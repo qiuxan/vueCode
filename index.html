@@ -4,41 +4,40 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">	
               <title></title>
+              <style type="text/css" media="screen">
+                .color-red {color:red; } 
+                .color-blue {color:blue; } 
+                .is-loading {background:red;}
+              </style>
     </head>
     <body>
 
         <div id="root">
-            <ul>
-                <li v-for='name in names' v-text='name'></li>
-            </ul>
-            <input type="text" value="" name="" id="input"/>
-            <button id= "button">Add name</button>
+            <h1 :class="className">Hello world</h1>
+
+            <button :class="{'is-loading':isloading}" @click="toggleClass">Click me!</button>
         </div>
           <!-- development version, includes helpful console warnings -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script charset="utf-8">
-//            let data={
-//                message:'hello world'
-//            }
-//
-            //document.querySelector('#input').value=data.message;
+
 
             var app= new Vue({
                 el: '#root',
                 data: {
-                    names:['a','b','c']
+
+                    className: 'color-red',
+                    isloading: true,
+                  
+                },
+                methods:{
+                    toggleClass(){
+                        this.isloading=false;
+                    }
 
                 },
-                mounted(){
-                 document.querySelector('#button').addEventListener('click',()=>{
-                    let name= document.querySelector('#input').value;
-
-                    app.names.push(name);
-                    name.value='';
-                });
-                }
             });
 
-                    </script>
+         </script>
     </body>
 </html>

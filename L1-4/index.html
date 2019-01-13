@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">	
+              <title></title>
+    </head>
+    <body>
+
+        <div id="root">
+            <ul>
+                <li v-for='name in names' v-text='name'></li>
+            </ul>
+            <input type="text" value="" name="" id="input" v-model="newName"/>
+            <button @click='addName' id= "button">Add name</button>
+        </div>
+          <!-- development version, includes helpful console warnings -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script charset="utf-8">
+//            let data={
+//                message:'hello world'
+//            }
+//
+            //document.querySelector('#input').value=data.message;
+
+            var app= new Vue({
+                el: '#root',
+                data: {
+                    newName:'',
+                    names:['a','b','c']
+
+                },
+                methods:{
+                
+                    addName(){
+                        this.names.push(this.newName);
+                        this.newName='';
+                    }
+                },
+                mounted(){
+                 //document.querySelector('#button').addEventListener('click',()=>{
+                 //   let name= document.querySelector('#input').value;
+
+                 //   app.names.push(name);
+                 //   name.value='';
+
+
+              //  });
+                }
+            });
+
+                    </script>
+    </body>
+</html>
