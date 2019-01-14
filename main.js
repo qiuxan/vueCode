@@ -1,30 +1,28 @@
-Vue.component('message',{
-    props:['title','body'],
-    data(){
-        return{ 
-            isVisible:true 
-        }
-    },
+Vue.component('modal',{
     template:`
-        <article class="message" v-show="isVisible">
-          <div class="message-header">
-            <p>{{title}}</p>
-            <button @click="isVisible=false" class="delete" aria-label="delete"></button>
+        <div class="modal is-active">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <!-- Any other Bulma elements you want -->
+            <div class="box">
+                <p>
+                <slot></slot>
+                </p>
+            </div>
           </div>
-          <div class="message-body">{{body}}</div>
-        </article> 
+          <button class="modal-close is-large" aria-label="close" @click="$emit('close')"></button>
+        </div>
     `, 
-   methods:{
-        hideModal(){
-            this.isVisible=false; 
-        } 
-   
-   } 
-   
+
+
 });
 
 
 var app= new Vue({
     el: '#root',
+
+    data:{
+        showModal:false,
+    }
                   
 });
