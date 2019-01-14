@@ -13,10 +13,17 @@
     <body>
 
         <div id="root" class="container">
-
-         <coupon @applied="onCouponApplied"></coupon>           
-         <h1 v-if="couponApplied">You used a coupon</h1>
-         <!-- <coupon v-on:applied="onCouponApplied"></coupon> -->            
+            <tabs>
+                <tab name="the first tab" :selected="true">
+                    <h1>this is the content of tab 1</h1>
+                </tab>    
+                <tab name="our culture">
+                    <h1>this is the content of tab 2</h1>
+                </tab>    
+                <tab name="about us">
+                    <h1>this is the content of tab 3</h1>
+                </tab>    
+            </tabs>
         </div>
           <!-- development version, includes helpful console warnings -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
