@@ -1,28 +1,72 @@
-Vue.component('modal',{
+Vue.component('tabs',{
     template:`
-        <div class="modal is-active">
-          <div class="modal-background"></div>
-          <div class="modal-content">
-            <!-- Any other Bulma elements you want -->
-            <div class="box">
-                <p>
-                <slot></slot>
-                </p>
+        <div>
+        
+            <div class="tabs">
+                  <ul>
+                    <li v-for="tab in tabs" :class="{'is-active':tab.isActive}">
+                        <a :href="tab.href" @click="selectTab(tab)">{{tab.name}}</a>
+                    </li> 
+                  </ul>
             </div>
-          </div>
-          <button class="modal-close is-large" aria-label="close" @click="$emit('close')"></button>
+            <div class="tabs-details">
+                <slot></slot>
+            </div>
+        
         </div>
-    `, 
+    `,
+    data(){
+    
+        return {tabs:[]};
+    },
 
+ 
 
+    created(){
+        this.tabs=this.$children; 
+    },
+    methods:{
+        selectTab(selectedTab){
+            this.tabs.forEach(
+            tab=>{
+                tab.isActive=(tab.name==selectedTab.name);
+            });
+        }
+    }
+
+/*
+    mounted(){
+    
+        console.log(this.$children);
+    }
+      */
 });
+Vue.component('tab',{
+    template:`
+       <div v-show="isActive"><slot></slot></div>
+    `,
+    props:{
+        name:{required:true},
+        selected:{default:false},
 
+    },
+    computed:{
+        href(){
+            return '#'+this.name.toLowerCase().replace(/ /g, '-');
+        }
+    },
+
+    data(){
+    return { isActive:false};
+    },
+
+    mounted(){
+        this.isActive=this.selected;
+    }
+});
 
 var app= new Vue({
     el: '#root',
 
-    data:{
-        showModal:false,
-    }
                   
 });

@@ -13,17 +13,8 @@
     <body>
 
         <div id="root" class="container">
-            <tabs>
-                <tab name="the first tab" :selected="true">
-                    <h1>this is the content of tab 1</h1>
-                </tab>    
-                <tab name="our culture">
-                    <h1>this is the content of tab 2</h1>
-                </tab>    
-                <tab name="about us">
-                    <h1>this is the content of tab 3</h1>
-                </tab>    
-            </tabs>
+            <modal v-if="showModal" @close="showModal=false">hahahahhahaha:</modal>
+            <button @click="showModal=true">Show Modal</button>
         </div>
           <!-- development version, includes helpful console warnings -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
