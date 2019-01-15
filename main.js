@@ -1,29 +1,23 @@
-Vue.component('coupon',{
-    template:'<input placeholder="Enter your code" @blur="onCouponApplied">',
-     methods:{
-        onCouponApplied(){
-        
-            //alert('hddhdh');
-            //
-            this.$emit('applied');
-      }
-    },
-});
+window.Event = new Vue()
 
-var app= new Vue({
-    el: '#root',
+Vue.component('coupon', {
+    template: `<input placeholder="Enter your coupon code" @blur="onCouponApplied">`,
 
-    data: {
-        couponApplied:false
-    
-    },
-    methods:{
-        onCouponApplied(){
-        
-           // alert('this is applied');
-            this.couponApplied=true;
+    methods: {
+        onCouponApplied() {
+            Event.$emit('applied')
         }
-    
     }
-                  
-});
+})
+
+new Vue({
+    el: '#root',
+    
+    data: {
+        couponApplied: false
+    },
+
+    created() {
+        Event.$on('applied',  () => alert('Handling it!'))
+    }
+})
