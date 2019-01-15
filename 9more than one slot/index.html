@@ -13,13 +13,10 @@
     <body>
 
         <div id="root" class="container">
-           <process-view inline-template>
-           
-               <div>
-                   <h1>Your process through this course is {{completionRate}}</h1>
-                   <p><button @click= "completionRate +=10" > increase the reate</button></p>
-               </div>
-           </process-view>
+           <modal>
+            <p slot="content">hahah hahah</p>
+            <template slot="confirm-button">Confirm</template>          
+           </modal>             
         </div>
           <!-- development version, includes helpful console warnings -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
